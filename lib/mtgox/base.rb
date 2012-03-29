@@ -1,5 +1,6 @@
 module MtGox
   class Base
+    cattr_reader :attributes
     attr_reader :attrs
 
     def initialize(attrs={})
@@ -23,6 +24,24 @@ module MtGox
       ret << ">"
 
       ret
+    end
+    alias to_s inspect
+
+    # return a hash version data. 
+    #
+    # @example
+    #
+    #  trades.to_hash => {price: 1.0, amount: 2.0, ...
+    #  trades.to_hash(:price) => {price: 1.0}
+    #
+    # @param [Symbol,String] key
+    # @return [Hash]
+    def to_hash(*keys)
+      keys = keys.empty? ? self.class.attributes : keys.map{|v|v.to_sym}
+
+      keys.each.with_object({}) {|k, memo|
+        memo[k] = send(k)
+      }
     end
   end
 end

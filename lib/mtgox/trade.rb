@@ -1,6 +1,8 @@
 module MtGox
   class Trade < Base
-    attr_accessor :date, :price, :price_int, :amount, :amount_int, :tid, :price_currency, :item, :trade_type, :primary, :properties
+    @@attributes = [:date, :price, :price_int, :amount, :amount_int, :tid, :price_currency, :item, :trade_type, :primary, :properties]
+
+    attr_accessor *@@attributes
 
     def tid=(raw)
       @tid = raw.to_i

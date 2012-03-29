@@ -1,6 +1,8 @@
 module MtGox
   class Depth < Base
-    attr_reader :asks, :bids
+    @@attributes = [ :asks, :bids ]
+
+    attr_reader *@@attributes
 
     def asks=(raw)
       @asks = raw.map{|v| Ask.new(v)}

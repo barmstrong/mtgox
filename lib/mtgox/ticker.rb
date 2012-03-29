@@ -1,6 +1,8 @@
 module MtGox
   class Ticker < Base
-    attr_accessor :high, :low, :avg, :vwap, :vol, :last, :last_local, :last_orig, :last_all, :buy, :sell
+    @@attributes = [:high, :low, :avg, :vwap, :vol, :last, :last_local, :last_orig, :last_all, :buy, :sell]
+
+    attr_accessor *@@attributes
 
     def high=(raw)
       @high = raw["value"].to_f

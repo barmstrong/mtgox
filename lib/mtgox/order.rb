@@ -1,6 +1,8 @@
 module MtGox
   class Order < Base
-    attr_accessor :oid, :currency, :item, :type, :amount, :price, :status, :date, :priority
+    @@attributes = [:oid, :currency, :item, :type, :amount, :price, :status, :date, :priority]
+
+    attr_accessor  *@@attributes
 
     def oid=(raw)
       @oid = raw.to_i

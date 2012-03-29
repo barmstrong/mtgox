@@ -17,7 +17,15 @@ Getting started
 
 	require "mtgox"
 
-	puts MtGox.ticker
+	ticker = MtGox.ticker
+	p ticker #=> #<MtGox::Ticker:0x51687540 @high=4.86092, @low=4.71083, ...>
+	p ticker.high => 4.86092
+
+	# Get raw data
+	p ticker.attrs #=> {"high"=>{"value"=>"4.86092", "value_int"=>"486092", ...}
+
+	# Get a hash version data
+	p ticker.to_hash #=> {:high => 4.86092, :low => 4.71083, ..}
 
 	# Certain methods require authentication
 	MtGox.configure do |config|
@@ -28,7 +36,7 @@ Getting started
 	me = MtGox.me
 
 	# Fetch your info
-	puts me.info
+	p me.info
 
 Install
 -------
