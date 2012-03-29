@@ -1,10 +1,10 @@
 Kernel.load File.expand_path("../lib/mtgox/version.rb", __FILE__)
 
 Gem::Specification.new do |s|
-  s.name        = "mtgox"
+  s.name        = "guten-mtgox"
   s.version     = MtGox::VERSION
-  s.summary     = %q{An Improved version of mtgox-gem with HTTP API v1}
-  s.description = %q{An Improved version of mtgox-gem with HTTP API v1}
+  s.summary     = %q{An improved version of mtgox-gem with HTTP API v1}
+  s.description = %q{An improved version of mtgox-gem with HTTP API v1}
   s.author      = "Guten"
   s.email       = "ywzhaifei@gmail.com"
   s.homepage    = "https://github.com/GutenYe/mtgox"

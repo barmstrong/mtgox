@@ -10,15 +10,16 @@ group :development do
   gem "rspec"
   gem "watchr"
   gem "webmock"
-  gem 'json'
-  gem 'maruku'
-  gem 'rake'
-  gem 'simplecov'
-  gem 'yard'
+  gem "json"
+  gem "maruku"
+  gem "rake"
+  gem "simplecov"
+  gem "yard"
+  gem "rag"
 end
 
 platforms :jruby do
-  gem 'jruby-openssl', '~> 0.7'
+  gem "jruby-openssl", "~> 0.7"
 end
 
 #gemspec

@@ -8,8 +8,9 @@ mtgox, An Improved version of mtgox-gem with HTTP API v1
 | Documentation: | http://rubydoc.info/gems/guten-mtgox/frames                |
 | Issue Tracker: | https://github.com/GutenYe/mtgox/issues |
 
-An improved version of original [mtgox](https://github.com/sferik/mtgox) with HTTP API v1 support.
+An improved version of original [mtgox](https://github.com/sferik/mtgox).
 
+API support: HTTP API v1
 
 Getting started
 ---------------
@@ -52,7 +53,7 @@ Credits
 Resources
 ---------
 
-* [MtGox/API/HTTP/v1](https://en.bitcoin.it/wiki/MtGox/API/HTTP/v1) 
+* [MtGox/API/HTTP/v1](https://en.bitcoin.it/wiki/MtGox/API/HTTP/v1) MtGox HTTP API Specification
 
 Copyright
 ---------
