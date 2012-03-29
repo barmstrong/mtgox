@@ -41,8 +41,9 @@ Getting started
 Install
 -------
 
-	gem install guten-mtgox
-
+	# Gemfile
+		gem "guten-mtgox", :git => "git://github.com/GutenYe/mtgox.git"
+	
 Note on Patches/Pull Requests
 -----------------------------
 
