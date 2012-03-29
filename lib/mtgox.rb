@@ -1,15 +1,39 @@
-require 'mtgox/client'
-require 'mtgox/configuration'
-require 'mtgox/error'
+libdir = File.dirname(__FILE__)
+$LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
+
+require "tagen/core"
 
 module MtGox
+  autoload :VERSION, "mtgox/version"
+  autoload :Client, "mtgox/client"
+  autoload :Me, "mtgox/me"
+  autoload :Configuration, "mtgox/configuration"
+  autoload :Connection, "mtgox/connection"
+  autoload :Request, "mtgox/request"
+  autoload :Base, "mtgox/base"
+  autoload :Ticker, "mtgox/ticker"
+  autoload :Trade, "mtgox/trade"
+  autoload :Depth, "mtgox/depth"
+  autoload :AskBase, "mtgox/ask"
+  autoload :Ask, "mtgox/ask"
+  autoload :Bid, "mtgox/ask"
+  autoload :Order, "mtgox/order"
+
+  Error  = Class.new StandardError
+  MysqlError = Class.new Error
+
   extend Configuration
+
   class << self
     # Alias for MtGox::Client.new
     #
     # @return [MtGox::Client]
     def new
-      MtGox::Client.new
+      Client.new
+    end
+
+    def me
+      @@me ||= Me.new
     end
 
     # Delegate to MtGox::Client

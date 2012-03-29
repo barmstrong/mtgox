@@ -1,4 +1,4 @@
-require 'helper'
+require 'spec_helper'
 
 describe MtGox do
   describe ".new" do
@@ -18,5 +18,4 @@ describe MtGox do
       MtGox.secret.should == "secret"
     end
   end
-
 end

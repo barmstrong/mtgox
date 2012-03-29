@@ -1,5 +1,3 @@
-require 'mtgox/version'
-
 module MtGox
   module Configuration
     # An array of valid keys in the options hash when configuring a {MtGox::Client}

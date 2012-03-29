@@ -1,13 +1,29 @@
-require 'mtgox/order'
-
 module MtGox
-  class Trade < Order
+  class Trade < Base
+    attr_accessor :date, :price, :price_int, :amount, :amount_int, :tid, :price_currency, :item, :trade_type, :primary, :properties
 
-    def initialize(trade={})
-      self.id     = trade['tid'].to_i
-      self.date   = Time.at(trade['date'].to_i)
-      self.amount = trade['amount'].to_f
-      self.price  = trade['price'].to_f
+    def tid=(raw)
+      @tid = raw.to_i
+    end
+
+    def date=(raw)
+      @date = Time.at(raw)
+    end
+
+    def price=(raw)
+      @price = raw.to_f
+    end
+
+    def amount=(raw)
+      @amount = raw.to_f
+    end
+
+    def price_int=(raw)
+      @price_int = raw.to_i
+    end
+
+    def amount_int=(raw)
+      @amount_int = raw.to_i
     end
   end
 end

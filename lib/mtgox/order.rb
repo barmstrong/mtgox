@@ -1,14 +1,25 @@
-require 'mtgox/offer'
-
 module MtGox
-  class Order < Offer
-    attr_accessor :id, :date
+  class Order < Base
+    attr_accessor :oid, :currency, :item, :type, :amount, :price, :status, :date, :priority
 
-    def initialize(order={})
-      self.id     = order['oid']
-      self.date   = Time.at(order['date'].to_i)
-      self.amount = order['amount'].to_f
-      self.price  = order['price'].to_f
+    def oid=(raw)
+      @oid = raw.to_i
+    end
+
+    def amount=(raw)
+      @amount = raw["value"].to_f
+    end
+
+    def price=(raw)
+      @price = raw["value"].to_f
+    end
+
+    def date=(raw)
+      @date = Time.at(raw)
+    end
+
+    def priority=(raw)
+      @priority = raw.to_i
     end
   end
 end

@@ -1,16 +1,20 @@
-require 'mtgox/offer'
-
 module MtGox
-  class Ask < Offer
+  class AskBase < Base
+    attr_accessor :price, :amount, :price_int, :amount_int, :stamp
 
-    def initialize(price=nil, amount=nil)
-      self.price = price.to_f
-      self.amount = amount.to_f
+    def price_int=(raw)
+      @price_int = raw.to_i
     end
 
-    def eprice
-      price / (1 - MtGox.commission)
+    def amount_int=(raw)
+      @amount_int = raw.to_i
     end
+  end
 
+  class Ask < AskBase
+  end
+
+  class Bid < AskBase
   end
 end
+

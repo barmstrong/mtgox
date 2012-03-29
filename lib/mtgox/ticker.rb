@@ -1,10 +1,49 @@
-require 'mtgox/price_ticker'
-require 'singleton'
-
 module MtGox
-  class Ticker
-    include Singleton
-    include PriceTicker
-    attr_accessor :buy, :sell, :high, :low, :volume, :vwap
+  class Ticker < Base
+    attr_accessor :high, :low, :avg, :vwap, :vol, :last, :last_local, :last_orig, :last_all, :buy, :sell
+
+    def high=(raw)
+      @high = raw["value"].to_f
+    end
+
+    def low=(raw)
+      @low = raw["value"].to_f
+    end
+
+    def avg=(raw)
+      @avg = raw["value"].to_f
+    end
+
+    def vwap=(raw)
+      @vwap = raw["value"].to_f
+    end
+
+    def vol=(raw)
+      @vol = raw["value"].to_f
+    end
+
+    def last=(raw)
+      @last = raw["value"].to_f
+    end
+
+    def last_local=(raw)
+      @last_local = raw["value"].to_f
+    end
+
+    def last_orig=(raw)
+      @last_orig = raw["value"].to_f
+    end
+
+    def last_all=(raw)
+      @last_all = raw["value"].to_f
+    end
+
+    def buy=(buy)
+      @buy = buy["value"].to_f
+    end
+
+    def sell=(sell)
+      @sell = sell["value"].to_f
+    end
   end
 end
