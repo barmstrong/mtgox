@@ -28,9 +28,9 @@ Getting started
 	p ticker.to_hash #=> {:high => 4.86092, :low => 4.71083, ..}
 
 	# Certain methods require authentication
-	MtGox.configure do |config|
-		config.key = YOUR_MTGOX_KEY
-		config.secret = YOUR_MTGOX_SECRET
+	MtGox.configure do |c|
+		c.key = YOUR_MTGOX_KEY
+		c.secret = YOUR_MTGOX_SECRET
 	end
 
 	me = MtGox.me
@@ -40,8 +40,13 @@ Getting started
 
 	# multi-currenty support
 
-	p MtGox.ticker # in USD currency
-	p MtGox.ticker :eur # in EUR currency
+	MtGox.configure do |c|
+		c.currency = :eur  # by default is :usd.
+	end
+	p MtGox.currency
+
+	p MtGox.ticker # in EUR currency
+	p MtGox.ticker :usd # in USD currency
 
 Install
 -------

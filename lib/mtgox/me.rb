@@ -21,7 +21,7 @@ module MtGox
     end
 
     # add a order
-    def add(type, amount_int, price_int, currency=:usd)
+    def add(type, amount_int, price_int, currency=nil)
       currency = currency_name(currency) 
       query = {type: type, amount_int: amount_int, price_int: price_int}
       post("https://mtgox.com/api/1/#{currency}/private/order/add", query)

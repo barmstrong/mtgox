@@ -11,7 +11,7 @@ module MtGox
     #
     # @authenticated false
     # @return [MtGox::Ticker]
-    def ticker(currency=:usd)
+    def ticker(currency=nil)
       currency = currency_name(currency)
       data = get("/api/1/#{currency}/public/ticker?raw")
       Ticker.new(data)
@@ -32,7 +32,6 @@ module MtGox
     #   @return [Depth] with keys :asks and :asks, which contain arrays as described in {MtGox::Client#asks} and {MtGox::Clients#bids}
     def depth(*args) 
       (currency,), o = args.extract_options
-      currency ||= :usd
       currency = currency_name(currency)
       depth = o[:full] ? "fulldepth" : "depth"
       data = get("/api/1/#{currency}/public/#{depth}?raw")
@@ -50,7 +49,6 @@ module MtGox
     # @return [Array<MtGox::Trade>] an array of trades, sorted in chronological order
     def trades(*args)
       (currency,), query = args.extract_options
-      currency ||= :usd
       currency = currency_name(currency)
       get("/api/1/#{currency}/public/trades?raw", query).map { |data|
         Trade.new(data)
@@ -59,7 +57,8 @@ module MtGox
 
   protected
     # :usd => "BTCUSD
-    def currency_name(symbol)
+    def currency_name(symbol=nil)
+      symbol ||= MtGox.currency
       "BTC#{symbol.upcase}"
     end
   end

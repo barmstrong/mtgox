@@ -5,6 +5,7 @@ module MtGox
       :commission,
       :key,
       :secret,
+      :currency,
     ]
 
     DEFAULT_COMMISSION = 0.0065.freeze
@@ -35,5 +36,11 @@ module MtGox
       self.secret   = nil
       self
     end
+
+    # :usd
+    def currency
+      @currency ||= :usd
+    end
+
   end
 end
