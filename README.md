@@ -38,7 +38,7 @@ Getting started
 	# Fetch your info
 	p me.info
 
-	# multi-currenty support
+	# multi-currency support
 
 	MtGox.configure do |c|
 		c.currency = :eur  # by default is :usd.
