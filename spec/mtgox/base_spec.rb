@@ -1,6 +1,7 @@
 require "spec_helper"
 
 class MyBase < MtGox::Base
+  cattr_reader :attributes
   @@attributes = [:foo, :bar]
   attr_accessor *@@attributes
 end
@@ -26,4 +27,3 @@ describe MtGox::Base do
     end
   end
 end
-

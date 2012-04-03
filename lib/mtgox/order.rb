@@ -1,5 +1,6 @@
 module MtGox
   class Order < Base
+    cattr_reader :attributes
     @@attributes = [:oid, :currency, :item, :type, :amount, :price, :status, :date, :priority]
 
     attr_accessor  *@@attributes

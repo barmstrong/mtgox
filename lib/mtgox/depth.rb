@@ -1,5 +1,6 @@
 module MtGox
   class Depth < Base
+    cattr_reader :attributes
     @@attributes = [ :asks, :bids ]
 
     attr_reader *@@attributes

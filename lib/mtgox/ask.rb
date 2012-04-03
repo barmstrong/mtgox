@@ -1,5 +1,6 @@
 module MtGox
   class AskBase < Base
+    cattr_reader :attributes
     @@attributes = [:price, :amount, :price_int, :amount_int, :stamp]
 
     attr_accessor *@@attributes

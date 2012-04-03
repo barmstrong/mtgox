@@ -1,5 +1,6 @@
 module MtGox
   class Ticker < Base
+    cattr_reader :attributes
     @@attributes = [:high, :low, :avg, :vwap, :vol, :last, :last_local, :last_orig, :last_all, :buy, :sell]
 
     attr_accessor *@@attributes

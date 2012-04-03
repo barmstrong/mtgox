@@ -38,6 +38,11 @@ Getting started
 	# Fetch your info
 	p me.info
 
+	# multi-currenty support
+
+	p MtGox.ticker # in USD currency
+	p MtGox.ticker :eur # in EUR currency
+
 Install
 -------
 

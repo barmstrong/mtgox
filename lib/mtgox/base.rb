@@ -1,6 +1,5 @@
 module MtGox
   class Base
-    cattr_reader :attributes
     attr_reader :attrs
 
     def initialize(attrs={})

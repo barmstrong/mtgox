@@ -1,5 +1,6 @@
 module MtGox
   class Trade < Base
+    cattr_reader :attributes
     @@attributes = [:date, :price, :price_int, :amount, :amount_int, :tid, :price_currency, :item, :trade_type, :primary, :properties]
 
     attr_accessor *@@attributes
