@@ -5,10 +5,12 @@ module MtGox
 
     # Fetch the latest ticker data
     #
-    # @authenticated false
-    # @return [MtGox::Ticker]
     # @example
     #   MtGox.ticker
+    #   MtGox.ticker :eur
+    #
+    # @authenticated false
+    # @return [MtGox::Ticker]
     def ticker(currency=:usd)
       currency = currency_name(currency)
       data = get("/api/1/#{currency}/public/ticker?raw")
@@ -21,7 +23,7 @@ module MtGox
     #
     #   MtGox.depth
     #   MtGox.depth(:full => true)
-    #   MtGox.depth(:usd, :full => true)
+    #   MtGox.depth(:eur, :full => true)
     #
     # @authenticated false
     # @overload depth([currency=:usd,] o={})
@@ -42,7 +44,7 @@ module MtGox
     # @example
     #   MtGox.trades
     #   MtGox.trades :since => 0
-    #   MtGox.trades :usd, :since => 0
+    #   MtGox.trades :eur, :since => 0
     #
     # @authenticated false
     # @return [Array<MtGox::Trade>] an array of trades, sorted in chronological order
