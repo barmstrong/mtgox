@@ -9,10 +9,19 @@ describe MtGox::Client do
     @client = MtGox::Client.new
   end
 
-  describe "currency_name" do
+  describe "#currency_name" do
     it "works" do
       @client.currency_name(:usd).should == "BTCUSD"
       @client.currency_name(:eur).should == "BTCEUR"
+    end
+
+    it "use MtGox.currency config" do
+      begin
+        MtGox.currency = :eur
+        @client.currency_name.should == "BTCEUR"
+      ensure
+        MtGox.currency = :usd
+      end
     end
   end
 

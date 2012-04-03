@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe MtGox do
   describe ".new" do
@@ -8,14 +8,16 @@ describe MtGox do
   end
 
   describe ".configure" do
-    it "should set 'key' and 'secret'" do
-      MtGox.configure do |config|
-        config.key = "key"
-        config.secret = "secret"
+    it "works" do
+      MtGox.configure do |c|
+        c.key = "key"
+        c.secret = "secret"
+        c.currency = :usd
       end
 
       MtGox.key.should == "key"
       MtGox.secret.should == "secret"
+      MtGox.currency.should == :usd
     end
   end
 end
