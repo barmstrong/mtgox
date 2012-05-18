@@ -5,6 +5,7 @@ module MtGox
 
     attr_accessor *@@attributes
 
+    # Fixnum
     def tid=(raw)
       @tid = raw.to_i
     end

@@ -1,6 +1,7 @@
-[
+{"result": "success",
+ "return": [
    {
-      "oid":"1",
+      "oid":"76a5986a-a122-4363-b16b-15f12bffb88c",
       "currency":"USD",
       "item":"BTC",
       "type":"bid",
@@ -20,4 +21,5 @@
       "date":1332896128,
       "priority":"1332896128221516"
    }
-]
+	]
+}

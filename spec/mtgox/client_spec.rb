@@ -27,7 +27,7 @@ describe MtGox::Client do
 
   describe "#ticker" do
     it "should fetch the ticker" do
-      stub_get("/api/1/BTCUSD/public/ticker?raw")
+      stub_get("/api/1/BTCUSD/public/ticker")
         .to_return(:status => 200, :body => fixture("ticker.json"))
 
       t = @client.ticker
@@ -46,17 +46,16 @@ describe MtGox::Client do
     end
 
     it "supports multi currency" do
-      stub_get("/api/1/BTCEUR/public/ticker?raw")
-        .to_return(:status => 200, :body => "{}")
+      stub_get("/api/1/BTCEUR/public/ticker")
+        .to_return(:status => 200, :body => fixture("ticker.json"))
 
       @client.ticker :eur
     end
-
   end
 
   describe "#depth" do
     it "works" do
-      stub_get("/api/1/BTCUSD/public/depth?raw")
+      stub_get("/api/1/BTCUSD/public/depth")
         .to_return(:status => 200, :body => fixture("depth.json"))
 
       d = @client.depth
@@ -70,15 +69,15 @@ describe MtGox::Client do
     end
 
     it "gets fulldepth with :full => true" do
-      stub_get("/api/1/BTCUSD/public/fulldepth?raw")
-        .to_return(:status => 200, :body => "[]")
+      stub_get("/api/1/BTCUSD/public/fulldepth")
+        .to_return(:status => 200, :body => fixture("depth.json"))
 
       d = @client.depth(:full => true)
     end
 
     it "supports multi currency" do
-      stub_get("/api/1/BTCEUR/public/depth?raw")
-        .to_return(:status => 200, :body => "[]")
+      stub_get("/api/1/BTCEUR/public/depth")
+        .to_return(:status => 200, :body => fixture("depth.json"))
 
       @client.depth :eur
     end
@@ -86,7 +85,7 @@ describe MtGox::Client do
 
   describe "#trades" do
     it "works" do
-      stub_get("/api/1/BTCUSD/public/trades?raw")
+      stub_get("/api/1/BTCUSD/public/trades")
         .to_return(:status => 200, :body => fixture("trades.json"))
 
       ts = @client.trades
@@ -104,15 +103,15 @@ describe MtGox::Client do
     end
 
     it "request with :since" do
-      stub_get("/api/1/BTCUSD/public/trades?raw&since=0")
-        .to_return(:status => 200, :body => "[]")
+      stub_get("/api/1/BTCUSD/public/trades?since=0")
+        .to_return(:status => 200, :body => fixture("trades.json"))
 
       @client.trades :since => 0
     end
 
     it "supports multi currency" do
-      stub_get("/api/1/BTCEUR/public/trades?raw")
-        .to_return(:status => 200, :body => "[]")
+      stub_get("/api/1/BTCEUR/public/trades")
+        .to_return(:status => 200, :body => fixture("trades.json"))
 
       @client.trades :eur
     end

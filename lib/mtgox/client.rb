@@ -13,7 +13,7 @@ module MtGox
     # @return [MtGox::Ticker]
     def ticker(currency=nil)
       currency = currency_name(currency)
-      data = get("/api/1/#{currency}/public/ticker?raw")
+      data = get("/api/1/#{currency}/public/ticker")["return"]
       Ticker.new(data)
     end
 
@@ -34,7 +34,7 @@ module MtGox
       (currency,), o = args.extract_options
       currency = currency_name(currency)
       depth = o[:full] ? "fulldepth" : "depth"
-      data = get("/api/1/#{currency}/public/#{depth}?raw")
+      data = get("/api/1/#{currency}/public/#{depth}")["return"]
       Depth.new data
     end
 
@@ -50,7 +50,7 @@ module MtGox
     def trades(*args)
       (currency,), query = args.extract_options
       currency = currency_name(currency)
-      get("/api/1/#{currency}/public/trades?raw", query).map { |data|
+      get("/api/1/#{currency}/public/trades", query)["return"].map { |data|
         Trade.new(data)
       }
     end

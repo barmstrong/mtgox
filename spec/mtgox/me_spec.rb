@@ -1,5 +1,7 @@
 require "spec_helper"
 
+OID = "76a5986a-a122-4363-b16b-15f12bffb88c"
+
 describe MtGox::Me do
   before :all do
     @me = MtGox::Me.new
@@ -7,7 +9,7 @@ describe MtGox::Me do
 
   describe "#info" do
     it "works" do
-      stub_post("/api/1/generic/private/info?raw")
+      stub_post("/api/1/generic/private/info")
         .with(:body => test_body, :headers => test_headers)
         .to_return(:status => 200, :body => fixture("info.json"))
 
@@ -28,13 +30,13 @@ describe MtGox::Me do
 
   describe "#orders" do
     it "works" do
-      stub_post("/api/1/generic/private/orders?raw")
+      stub_post("/api/1/generic/private/orders")
         .with(:body => test_body, :headers => test_headers)
         .to_return(:status => 200, :body => fixture("orders.json"))
 
       o = @me.orders[0]
 
-      o.oid.should == 1
+      o.oid.should == OID
       o.currency.should == "USD"
       o.item.should == "BTC"
       o.type.should == "bid"
@@ -48,7 +50,7 @@ describe MtGox::Me do
 
   describe "#trades" do
     it "works" do
-      stub_post("/api/1/generic/private/trades?raw")
+      stub_post("/api/1/generic/private/trades")
         .with(:body => test_body, :headers => test_headers)
         .to_return(:status => 200, :body => fixture("trades.json"))
 
@@ -66,6 +68,28 @@ describe MtGox::Me do
 
 
       @me.add("bid", 1*10000, 1*100000)
+    end
+  end
+
+  describe "#cancel" do
+    before :each do
+      body = test_body("type"=>2, "oid"=>OID)
+
+      stub_post("/api/0/cancelOrder.php")
+        .with(:body => body, :headers => test_headers(body))
+        .to_return(:status => 200)
+      
+      stub_post("/api/1/generic/private/orders")
+        .with(:body => test_body, :headers => test_headers)
+        .to_return(:status => 200, :body => fixture("orders.json"))
+    end
+
+    it "works" do
+      @me.cancel(:bid, OID)
+    end
+
+    it "raises error with wrong oid" do
+      lambda{ @me.cancel(:bid, "wrong_oid") }.should raise_error Faraday::Error::ResourceNotFound
     end
   end
 end

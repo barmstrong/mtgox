@@ -5,8 +5,9 @@ module MtGox
 
     attr_accessor  *@@attributes
 
+    # String
     def oid=(raw)
-      @oid = raw.to_i
+      @oid = raw
     end
 
     def amount=(raw)

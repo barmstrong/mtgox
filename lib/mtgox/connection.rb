@@ -1,7 +1,7 @@
-require 'faraday'
-require 'mtgox/response/raise_mtgox_error'
-require 'faraday_middleware'
-require 'faraday_middleware/response/parse_json'
+require "faraday"
+require "mtgox/response/raise_mtgox_error"
+require "faraday_middleware"
+require "faraday_middleware/response/parse_json"
 
 module MtGox
   module Connection
@@ -10,11 +10,11 @@ module MtGox
     def connection
       options = {
         :headers  => {
-          :accept => 'application/json',
-          :user_agent => "mtgox gem #{MtGox::VERSION}",
+          :accept => "application/json",
+          :user_agent => "mtgox gem #{MtGox::VERSION}"
         },
         :ssl => {:verify => false},
-        :url => 'https://mtgox.com',
+        :url => "https://mtgox.com",
       }
 
       Faraday.new(options) do |c|

@@ -1,3 +1,6 @@
+/test
+/tags
+
 !.gitignore
 *.gem
 *.rbc
