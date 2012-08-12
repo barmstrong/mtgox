@@ -1,4 +1,3 @@
-
 module MtGox
   class Me < Client
     ORDER_TYPES = {ask: 1, bid: 2}

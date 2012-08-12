@@ -1,5 +1,4 @@
-mtgox, An Improved version of mtgox-gem with HTTP API v1
-========================
+# mtgox, An Improved version of mtgox-gem with HTTP API v1 [![Build Status](https://secure.travis-ci.org/GutenYe/mtgox.png)](http://travis-ci.org/GutenYe/mtgox)
 
 | Homepage:      |  https://github.com/GutenYe/mtgox       |
 |----------------|------------------------------------------------------       |
