@@ -22,6 +22,10 @@ module MtGox
       }
     end
 
+    def wallet_history
+      post('/api/1/generic/wallet/history', {currency: 'USD'})['return']['result']
+    end
+
     # add an order
     #
     # @example
