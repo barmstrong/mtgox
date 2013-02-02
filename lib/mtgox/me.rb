@@ -22,8 +22,13 @@ module MtGox
       }
     end
 
-    def wallet_history
-      post('/api/1/generic/wallet/history', {currency: 'USD'})['return']['result']
+    # this method call matches the advanced search params you can do on https://mtgox.com/trade/account-history
+    # valid options: currency, type, date_start, date_end, trade_id, page
+    # type can be ones of: deposit, withdraw, fee, in, out spent earned
+    # currency is a required param, different results are shown depending if you use 'BTC' or your native currency
+    def wallet_history options={}
+      options[:currency] ||= 'BTC'
+      post('/api/1/generic/wallet/history', options)['return']['result']
     end
 
     # add an order
