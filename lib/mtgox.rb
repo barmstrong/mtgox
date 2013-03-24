@@ -1,9 +1,8 @@
 libdir = File.dirname(__FILE__)
 $LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
 
-require "tagen/core/array/extract_options"
-require "active_support/core_ext/class/attribute_accessors"
 require "pd"
+require "mtgox/ext"
 
 module MtGox
   autoload :VERSION, "mtgox/version"

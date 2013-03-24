@@ -12,7 +12,6 @@ Gem::Specification.new do |s|
   s.files       = `git ls-files`.split("\n")
 
   s.add_dependency "pd"
-  s.add_dependency "tagen"
   s.add_dependency "faraday", "~> 0.7"
   s.add_dependency "faraday_middleware", "~> 0.8"
   s.add_dependency "multi_json", "~> 1.0"
