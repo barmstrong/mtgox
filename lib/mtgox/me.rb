@@ -48,9 +48,8 @@ module MtGox
     # @example
     #  
     #  cancel(:bid, "76a5986a-a122-4363-b16b-15f12bffb88c")
-    def cancel(type, oid)
+    def cancel(oid)
       if orders.find{|t| t.oid == oid }
-        type = ORDER_TYPES[type.to_sym]
         query = {oid: oid}
         post("/api/1/generic/private/order/cancel", query)
         true

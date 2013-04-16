@@ -85,11 +85,11 @@ describe MtGox::Me do
     end
 
     it "works" do
-      @me.cancel(:bid, OID)
+      @me.cancel(OID)
     end
 
     it "raises error with wrong oid" do
-      lambda{ @me.cancel(:bid, "wrong_oid") }.should raise_error Faraday::Error::ResourceNotFound
+      lambda{ @me.cancel("wrong_oid") }.should raise_error Faraday::Error::ResourceNotFound
     end
   end
 end
