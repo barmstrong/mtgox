@@ -51,8 +51,8 @@ module MtGox
     def cancel(type, oid)
       if orders.find{|t| t.oid == oid }
         type = ORDER_TYPES[type.to_sym]
-        query = {type: type, oid: oid}
-        post("/api/0/cancelOrder.php", query)
+        query = {oid: oid}
+        post("/api/1/generic/private/order/cancel", query)
         true
       else
         raise Faraday::Error::ResourceNotFound, {:status => 404, :headers => {}, :body => "Order not found."}

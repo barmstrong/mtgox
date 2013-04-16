@@ -73,11 +73,11 @@ describe MtGox::Me do
 
   describe "#cancel" do
     before :each do
-      body = test_body("type"=>2, "oid"=>OID)
+      body = test_body("oid"=>OID)
 
-      stub_post("/api/0/cancelOrder.php")
+      stub_post("/api/1/generic/private/order/cancel")
         .with(:body => body, :headers => test_headers(body))
-        .to_return(:status => 200)
+        .to_return(:status => 200, :body => fixture("cancel.json"))
       
       stub_post("/api/1/generic/private/orders")
         .with(:body => test_body, :headers => test_headers)
