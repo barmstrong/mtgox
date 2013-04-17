@@ -23,19 +23,19 @@ MtGox.configure do |c|
 end
 
 def a_get(path)
-  a_request(:get, "https://mtgox.com" + path)
+  a_request(:get, "https://data.mtgox.com" + path)
 end
 
 def stub_get(path)
-  stub_request(:get, "https://mtgox.com" + path)
+  stub_request(:get, "https://data.mtgox.com" + path)
 end
 
 def a_post(path)
-  a_request(:post, "https://mtgox.com" + path)
+  a_request(:post, "https://data.mtgox.com" + path)
 end
 
 def stub_post(path)
-  stub_request(:post, "https://mtgox.com#{path}")
+  stub_request(:post, "https://data.mtgox.com#{path}")
 end
 
 def fixture_path
@@ -49,9 +49,9 @@ end
 def test_headers(body=test_body)
   signed_headers(body).merge!(
     {
-      "Accept" => "application/json",
+      "Accept" => "*/*",
       "Content-Type" => "application/x-www-form-urlencoded",
-      "User-Agent" => "mtgox gem #{MtGox::VERSION}",
+      "User-Agent" => "Ruby",
     }
   )
 end

@@ -73,11 +73,11 @@ describe MtGox::Me do
 
   describe "#cancel" do
     before :each do
-      body = test_body("type"=>2, "oid"=>OID)
+      body = test_body("oid"=>OID)
 
-      stub_post("/api/0/cancelOrder.php")
+      stub_post("/api/1/generic/private/order/cancel")
         .with(:body => body, :headers => test_headers(body))
-        .to_return(:status => 200)
+        .to_return(:status => 200, :body => fixture("cancel.json"))
       
       stub_post("/api/1/generic/private/orders")
         .with(:body => test_body, :headers => test_headers)
@@ -85,11 +85,11 @@ describe MtGox::Me do
     end
 
     it "works" do
-      @me.cancel(:bid, OID)
+      @me.cancel(OID)
     end
 
     it "raises error with wrong oid" do
-      lambda{ @me.cancel(:bid, "wrong_oid") }.should raise_error Faraday::Error::ResourceNotFound
+      lambda{ @me.cancel("wrong_oid") }.should raise_error Faraday::Error::ResourceNotFound
     end
   end
 end

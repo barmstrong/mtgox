@@ -14,7 +14,7 @@ module MtGox
           :user_agent => "mtgox gem #{MtGox::VERSION}"
         },
         :ssl => {:verify => false},
-        :url => "https://mtgox.com",
+        :url => "https://data.mtgox.com",
       }
 
       Faraday.new(options) do |c|
