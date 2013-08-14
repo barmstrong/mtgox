@@ -13,7 +13,7 @@ module MtGox
     # @return [MtGox::Ticker]
     def ticker(currency=nil)
       currency = currency_name(currency)
-      data = get("/api/1/#{currency}/public/ticker")["return"]
+      data = get("/api/1/#{currency}/ticker")["return"]
       Ticker.new(data)
     end
 
