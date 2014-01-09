@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gem "pd"
 #gem "tagen"
 gem "faraday", "~> 0.7"
-gem "faraday_middleware", "~> 0.8"
+gem "faraday_middleware", "~> 0.9"
 gem "multi_json", "~> 1.0"
 
 group :development do
